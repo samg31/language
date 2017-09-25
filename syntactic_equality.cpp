@@ -1,3 +1,5 @@
+#include "el-syntax.hpp"
+
 /*
   This function takes two numeric expressions and determines if they are 
   syntactically the same.
@@ -5,6 +7,7 @@
 */
 bool neq(NumExpr e1, NumExpr e2) {
 
+    
 
 }
 
