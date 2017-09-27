@@ -13,12 +13,23 @@ bool neq(NumExpr e1, NumExpr e2) {
   if(n1 == n2){
     switch(n1){
       case "int":
+        if(n1->val == n2->val){
+          return true;
+        }
         break;
       case "arg":
+        if(n1->ix == n2->ix){
+          return true;
+        }
         break;
       case "arith":
+        if(n1->op == n2->op){
+          //recursively check if the num_exprs are equal
+        }
         break;
       case "if":
+        //call beq for the bool expressions of n1 and n2
+        //recursively neq for e1 and e2 of n1 and n2
         break;
      }
     }
