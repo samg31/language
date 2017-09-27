@@ -5,11 +5,11 @@
   syntactically the same.
   Returns true if they are, and false otherwise.
 */
-bool neq(NumExpr* e1, NumExpr* e2) {
+bool neq(num_expr* e1, num_expr* e2) {
 
   string n1, n2;
-  n1 = get_node_name(e1);
-  n2 = get_node_name(e2);
+  e1->kind = get_node_name(e1->kind);
+  e2->kind = get_node_name(e2->kind);
   if(n1 == n2){
     switch(n1){
       case "int":
@@ -56,7 +56,7 @@ bool neq(NumExpr* e1, NumExpr* e2) {
   syntactically the same.
   Returns true if they are, and false otherwise.
 */
-bool beq(BoolExpr* e1, BoolExpr* e2) {
+bool beq(bool_expr* e1, bool_expr* e2) {
   
   string n1, n2;
   n1 = get_node_name(e1);
