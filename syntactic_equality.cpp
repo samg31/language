@@ -6,7 +6,7 @@
   Returns true if they are, and false otherwise.
 */
 
-bool neq(NumExpr* e1, NumExpr* e2) {
+bool neq(num_expr* e1, num_expr* e2) {
   if(e1->kind == e2=->kind){
     switch(e1){
       case ek_int:
@@ -54,7 +54,7 @@ bool neq(NumExpr* e1, NumExpr* e2) {
   Returns true if they are, and false otherwise.
 */
 
-bool beq(BoolExpr* e1, BoolExpr* e2) {
+bool beq(bool_expr* e1,bool_expr* e2) {
   if(e1 == e2){
     switch(e1){
       case ek_bool:
