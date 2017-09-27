@@ -70,7 +70,7 @@ bool beq(BoolExpr e1, BoolExpr e2) {
         break;
       case "rel":
         if(n1->op == n2->op){
-          //recursively check if the num_exprs are equal
+          //recursively check if the bool_exprs are equal
           if(beq(n1->e1, n2->e2)){
             if(beq(n1->e2, n2->e2)){
               return true;
@@ -80,7 +80,7 @@ bool beq(BoolExpr e1, BoolExpr e2) {
         break;
       case "logic":
         if(n1->op == n2->op){
-          //recursively check if the num_exprs are equal
+          //recursively check if the bool_exprs are equal
           if(beq(n1->e1, n2->e2)){
             if(beq(n1->e2, n2->e2)){
               return true;
