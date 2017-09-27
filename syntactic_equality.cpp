@@ -5,7 +5,7 @@
   syntactically the same.
   Returns true if they are, and false otherwise.
 */
-bool neq(NumExpr e1, NumExpr e2) {
+bool neq(NumExpr* e1, NumExpr* e2) {
 
   string n1, n2;
   n1 = get_node_name(e1);
@@ -56,7 +56,7 @@ bool neq(NumExpr e1, NumExpr e2) {
   syntactically the same.
   Returns true if they are, and false otherwise.
 */
-bool beq(BoolExpr e1, BoolExpr e2) {
+bool beq(BoolExpr* e1, BoolExpr* e2) {
   
   string n1, n2;
   n1 = get_node_name(e1);
