@@ -1,6 +1,6 @@
 #pragma once
 
-#include <el/el-syntax.hpp>
+#include <dcipl/el/el-syntax.hpp>
 
 #include <sexpr/translation.hpp>
 
