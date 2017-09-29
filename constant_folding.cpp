@@ -26,6 +26,7 @@ namespace dcipl
             }
         }
 
+
 			bool_expr*
 			bfold(bool_expr* b)
 			{
@@ -43,25 +44,27 @@ namespace dcipl
     }
 
 namespace {	
-	num_expr* 
-	eval_arith(arith_expr* arith)
-	{
-		arith->e1 = nfold(arith->e1);
-		arith->e2 = nfold(arith->e2);
-				
-		if(arith->e1->kind == ek_argc || arith->e2->kind == ek_argc )
-			return arith;
-				
-		return new int_lit(arith->locs, eval_arith_expr(arith));
-	}
+	        num_expr* 
+        eval_arith(arith_expr* arith)
+        {
+            arith->e1 = nfold(arith->e1);
+            arith->e2 = nfold(arith->e2);
+            if(arith->e1->kind == k_argc || arith->e2->kind == k_argc )
+                return arith;
+            return int_lit(arith->locs, eval_arith_expr(arith));
+        }
 
-	num_expr* 
-	eval_if(if_expr* cond)
-	{
-		if(cond->e1->kind == ek_argc || cond->e2->kind == ek_argc )
-			return cond;
-		return new int_lit(cond->locs, eval_if_expr(cond));
-	}
+        num_expr* 
+        eval_if(if_expr* cond)
+        {
+            cond->test = bfold(cond->test);
+            cond->e1 = nfold(cond->e1);
+            cond->e2 = nfold(cond->e2);
+
+            if(cond->e1->kind == k_argc || cond->e2->kind == k_argc || cond->test->e1->kind == k_argc || cond->test->e2->kind == k_argc)
+                return cond;
+            return int_lit(cond->locs, eval_if_expr(cond));
+        }
 
 	bool_expr*
 	eval_logic(logic_expr* l)
@@ -89,4 +92,3 @@ namespace {
 }	
 }
 
-	
