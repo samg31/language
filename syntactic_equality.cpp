@@ -1,5 +1,3 @@
-#pragma once
-
 #include "el-syntax.cpp"
 
 /*
