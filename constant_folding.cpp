@@ -26,7 +26,25 @@ namespace dcipl
             }
         }
 
-        num_expr* 
+
+			bool_expr*
+			bfold(bool_expr* b)
+			{
+				switch(b->kind)
+				{
+				case ek_bool:
+					return static_cast<bool_expr*>(b);
+				case ek_logic:
+					return eval_logic(static_cast<logic_expr*>(b));
+				case ek_rel:
+					return eval_rel(static_cast<rel_expr*>(b));
+				}
+			}
+
+    }
+
+namespace {	
+	        num_expr* 
         eval_arith(arith_expr* arith)
         {
             arith->e1 = nfold(arith->e1);
@@ -47,5 +65,30 @@ namespace dcipl
                 return cond;
             return int_lit(cond->locs, eval_if_expr(cond));
         }
-    }
+
+	bool_expr*
+	eval_logic(logic_expr* l)
+	{
+		l->e1 = bfold(l->e1);
+		l->e2 = bfold(l->e2);
+
+		if(l->e1->kind == ek_argc || l->e2->kind == ek_argc )
+			return l;
+
+		return new bool_lit(l->locs, eval_logic_expr(l));
+	}
+
+	bool_expr*
+	eval_rel(rel_expr* r)
+	{
+		r->e1 = bfold(r->e1);
+		r->e2 = bfold(r->e2);
+
+		if(r->e1->kind == ek_argc || r->e2->kind == ek_argc )
+			return r;
+
+		return new bool_lit(r->locs, eval_logic_expr(r));		
+	}
+}	
 }
+
