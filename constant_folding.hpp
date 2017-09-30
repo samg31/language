@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dcipl/el/el-syntax.hpp>
+#include "dcipl/el/el-syntax.hpp"
 
-#include <sexpr/translation.hpp>
+#include "sexpr/translation.hpp"
 
 namespace dcipl
 {
@@ -15,6 +15,6 @@ namespace dcipl
         num_expr* eval_arith(arith_expr* arith);
         num_expr* eval_if(if_expr* cond);
 
-        bool_expr* eval_logic(bool_expr* expr)
+        bool_expr* eval_logic(bool_expr* expr);
     }
 }
